@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youpi - La Magie des Jouets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, -30px) rotate(180deg); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientMove 8s ease infinite;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '🎈🧸🎲🚂🎨🎪';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            font-size: 3em;
+            animation: toys-float 10s linear infinite;
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '⭐🎯🎊🎁🎵🎭';
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+            font-size: 2.5em;
+            animation: toys-float 12s linear infinite reverse;
+            opacity: 0.3;
+        }
+
+        @keyframes toys-float {
+            0% { transform: translateX(-100px) rotate(0deg); }
+            100% { transform: translateX(100px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.8); }
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+            100% { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .categories h2 {
+            text-align: center;
+            font-size: 3em;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .categories-intro {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .category-header h3 {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .category-header .emoji {
+            font-size: 3em;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transition: left 0.5s;
+        }
+
+        .product-card:hover .product-image::before {
+            left: 100%;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h4 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 10px;
+            min-height: 50px;
+        }
+
+        .product-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .product-price {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .view-all-btn {
+            display: block;
+            margin: 40px auto 0;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .view-all-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .upload-section h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .upload-instructions {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .upload-instructions h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .upload-instructions ol {
+            margin-left: 20px;
+            line-height: 2;
+            color: #333;
+        }
+
+        .upload-instructions code {
+            background: #f5f5f5;
+            padding: 3px 8px;
+            border-radius: 5px;
+            color: #ff6b6b;
+            font-family: monospace;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            background: rgba(255,255,255,0.8);
+            padding: 40px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border: 2px solid rgba(255,107,107,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #feca57;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #feca57;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero p {
+                font-size: 1.2em;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-header h3 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Youpi! 🎈</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#jouets">Jouets</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bienvenue chez Youpi!</h1>
+                <p>La boutique magique où les rêves d'enfants prennent vie</p>
+                <a href="#jouets" class="cta-button">Découvrir nos Jouets ✨</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2>Nos Jouets Disponibles</h2>
+            <p class="categories-intro">Découvrez notre sélection soigneusement choisie de jouets de qualité pour tous les âges</p>
+
+            <!-- Instructions pour ajouter vos photos -->
+            <div class="upload-section">
+                <h3>📸 Comment Ajouter Vos Photos de Jouets</h3>
+                <div class="upload-instructions">
+                    <h4>Méthode 1 : Via des liens d'images en ligne</h4>
+                    <ol>
+                        <li>Uploadez vos photos sur un service gratuit comme <strong>Imgur.com</strong> ou <strong>Imgbb.com</strong></li>
+                        <li>Copiez le lien direct de l'image</li>
+                        <li>Dans le code HTML, remplacez <code>IMAGE_URL_ICI</code> par votre lien</li>
+                        <li>Exemple : <code>&lt;img src="https://i.imgur.com/votre-image.jpg"&gt;</code></li>
+                    </ol>
+
+                    <h4>Méthode 2 : Images locales (pour hébergement web)</h4>
+                    <ol>
+                        <li>Créez un dossier <code>images</code> à côté de votre fichier HTML</li>
+                        <li>Placez vos photos dedans (nommez-les : peluche1.jpg, lego1.jpg, etc.)</li>
+                        <li>Utilisez : <code>&lt;img src="images/peluche1.jpg"&gt;</code></li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Catégorie 1 : Peluches & Doudous -->
+            <div class="category-section" id="peluches">
+                <div class="category-header">
+                    <span class="emoji">🧸</span>
+                    <h3>Peluches & Doudous</h3>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Nouveau</div>
+                        <div class="product-image">
+                            <!-- REMPLACEZ 🧸 par : <img src="VOTRE_URL_IMAGE" alt="Ours en peluche"> -->
+                            🧸
+                        </div>
+                        <div class="product-info">
+                            <h4>Ours en Peluche Géant</h4>
+                            <p>Doux et câlin, parfait pour les gros câlins. Hauteur 60cm, lavable en machine.</p>
+                            <div class="product-footer">
+                                <span class="product-price">15 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- REMPLACEZ 🦁 par votre image -->
+                            🦁
+                        </div>
+                        <div class="product-info">
+                            <h4>Lion Doudou</h4>
+                            <p>Roi de la savane tout doux, idéal pour les bébés dès la naissance.</p>
+                            <div class="product-footer">
+                                <span class="product-price">8 500 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-badge">Promo -20%</div>
+                        <div class="product-image">
+                            🐰
+                        </div>
+                        <div class="product-info">
+                            <h4>Lapin Rose Pastel</h4>
+                            <p>Peluche lapin aux couleurs douces, oreilles longues et soyeuses.</p>
+                            <div class="product-footer">
+                                <span class="product-price">6 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-btn">Voir tous les Peluches →</a>
+            </div>
+
+            <!-- Catégorie 2 : Jeux de Construction -->
+            <div class="category-section" id="construction">
+                <div class="category-header">
+                    <span class="emoji">🏗️</span>
+                    <h3>Jeux de Construction</h3>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Best Seller</div>
+                        <div class="product-image">
+                            🧱
+                        </div>
+                        <div class="product-info">
+                            <h4>Set de Blocs 200 Pièces</h4>
+                            <p>Construction créative illimitée avec 200 blocs colorés compatibles.</p>
+                            <div class="product-footer">
+                                <span class="product-price">18 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            🏰
+                        </div>
+                        <div class="product-info">
+                            <h4>Château Médiéval</h4>
+                            <p>Construisez un château avec pont-levis et tours. 350 pièces.</p>
+                            <div class="product-footer">
+                                <span class="product-price">25 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            🚁
+                        </div>
+                        <div class="product-info">
+                            <h4>Hélicoptère à Construire</h4>
+                            <p>Modèle technique avec pales rotatives et cabine détaillée.</p>
+                            <div class="product-footer">
+                                <span class="product-price">12 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-btn">Voir tous les Jeux de Construction →</a>
+            </div>
+
+            <!-- Catégorie 3 : Véhicules & Trains -->
+            <div class="category-section" id="vehicules">
+                <div class="category-header">
+                    <span class="emoji">🚂</span>
+                    <h3>Véhicules & Trains</h3>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            🚗
+                        </div>
+                        <div class="product-info">
+                            <h4>Voiture Télécommandée</h4>
+                            <p>Bolide ultra-rapide avec télécommande, lumières LED intégrées.</p>
+                            <div class="product-footer">
+                                <span class="product-price">22 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-badge">Nouveau</div>
+                        <div class="product-image">
+                            🚂
+                        </div>
+                        <div class="product-info">
+                            <h4>Train Express avec Rails</h4>
+                            <p>Circuit complet de 3 mètres avec locomotive sonore et 3 wagons.</p>
+                            <div class="product-footer">
+                                <span class="product-price">35 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            ✈️
+                        </div>
+                        <div class="product-info">
+                            <h4>Avion Planeur</h4>
+                            <p>Avion en mousse pour vol plané, parfait pour le jardin.</p>
+                            <div class="product-footer">
+                                <span class="product-price">4 500 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-btn">Voir tous les Véhicules →</a>
+            </div>
+
+            <!-- Catégorie 4 : Créativité & Arts -->
+            <div class="category-section" id="creativite">
+                <div class="category-header">
+                    <span class="emoji">🎨</span>
+                    <h3>Créativité & Arts</h3>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            🎨
+                        </div>
+                        <div class="product-info">
+                            <h4>Set de Peinture Complet</h4>
+                            <p>50 pièces : peintures, pinceaux, crayons, feutres et cahier.</p>
+                            <div class="product-footer">
+                                <span class="product-price">16 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-badge">Top Vente</div>
+                        <div class="product-image">
+                            🖍️
+                        </div>
+                        <div class="product-info">
+                            <h4>Kit de Coloriage Magique</h4>
+                            <p>Crayons qui changent de couleur à l'eau + 20 feuilles magiques.</p>
+                            <div class="product-footer">
+                                <span class="product-price">9 500 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            ✂️
+                        </div>
+                        <div class="product-info">
+                            <h4>Atelier Découpage</h4>
+                            <p>Kit complet pour apprendre à découper et créer en toute sécurité.</p>
+                            <div class="product-footer">
+                                <span class="product-price">7 500 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-btn">Voir tous les Kits Créatifs →</a>
+            </div>
+
+            <!-- Catégorie 5 : Jeux de Société -->
+            <div class="category-section" id="jeux-societe">
+                <div class="category-header">
+                    <span class="emoji">🎲</span>
+                    <h3>Jeux de Société</h3>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Famille</div>
+                        <div class="product-image">
+                            🎲
+                        </div>
+                        <div class="product-info">
+                            <h4>Jeu de Dés Familial</h4>
+                            <p>Jeu amusant pour 2-6 joueurs, règles simples, parties rapides.</p>
+                            <div class="product-footer">
+                                <span class="product-price">11 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            🃏
+                        </div>
+                        <div class="product-info">
+                            <h4>Jeu de Cartes Stratégique</h4>
+                            <p>Développe la réflexion et la stratégie, dès 7 ans.</p>
+                            <div class="product-footer">
+                                <span class="product-price">8 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            🎯
+                        </div>
+                        <div class="product-info">
+                            <h4>Jeu de Cible Magnétique</h4>
+                            <p>Cible sûre avec fléchettes magnétiques, sans danger.</p>
+                            <div class="product-footer">
+                                <span class="product-price">13 500 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-btn">Voir tous les Jeux de Société →</a>
+            </div>
+
+            <!-- Catégorie 6 : Déguisements -->
+            <div class="category-section" id="deguisements">
+                <div class="category-header">
+                    <span class="emoji">🎭</span>
+                    <h3>Déguisements & Costumes</h3>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Populaire</div>
+                        <div class="product-image">
+                            👑
+                        </div>
+                        <div class="product-info">
+                            <h4>Costume de Princesse</h4>
+                            <p>Robe longue scintillante avec couronne et baguette magique.</p>
+                            <div class="product-footer">
+                                <span class="product-price">14 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            🦸
+                        </div>
+                        <div class="product-info">
+                            <h4>Déguisement Super-Héros</h4>
+                            <p>Cape, masque et combinaison pour devenir un vrai héros.</p>
+                            <div class="product-footer">
+                                <span class="product-price">12 500 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            🧙
+                        </div>
+                        <div class="product-info">
+                            <h4>Kit Magicien</h4>
+                            <p>Chapeau, cape étoilée et baguette pour de véritables tours de magie.</p>
+                            <div class="product-footer">
+                                <span class="product-price">10 000 FCFA</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-btn">Voir tous les Déguisements →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Pourquoi Choisir Youpi?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Qualité Premium</h3>
+                    <p>Tous nos jouets sont sélectionnés pour leur qualité exceptionnelle et leur sécurité</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Livraison Rapide</h3>
+                    <p>Recevez vos commandes rapidement pour ne pas faire attendre les petits impatients</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💝</div>
+                    <h3>Emballage Cadeau</h3>
+                    <p>Service d'emballage cadeau gratuit pour faire briller les yeux des enfants</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Conseils Experts</h3>
+                    <p>Notre équipe vous guide pour choisir le jouet parfait selon l'âge et les goûts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Youpi Jouets</h3>
+                    <p>La boutique qui met des étoiles dans les yeux des enfants depuis 2020. Nous sélectionnons avec amour chaque jouet pour garantir des heures de bonheur.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Informations</h3>
+                    <p>📍 Cotonou, Bénin</p>
+                    <p>📞 +229 XX XX XX XX</p>
+                    <p>✉️ contact@youpi-jouets.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Samedi: 9h00 - 19h00</p>
+                    <p>Dimanche: 10h00 - 18h00</p>
+                    <p>Jours fériés: 10h00 - 17h00</p>
+                </div>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon">📘</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">🐦</a>
+                <a href="#" class="social-icon">💼</a>
+            </div>
+            
+            <p style="margin-top: 30px; color: #bdc3c7;">
+                © 2024 Youpi Jouets - Tous droits réservés | Fait avec ❤️ pour les enfants
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.product-card, .feature-item');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Boutons Ajouter au panier
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-info').querySelector('h4').textContent;
+                this.textContent = '✓ Ajouté';
+                this.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+                
+                setTimeout(() => {
+                    this.textContent = 'Ajouter';
+                    this.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57)';
+                }, 2000);
+                
+                alert('🎉 ' + productName + ' a été ajouté à votre panier !');
+            });
+        });
+
+        // Effet de particules sur le hero
+        function createParticle() {
+            const hero = document.querySelector('.hero');
+            const particle = document.createElement('div');
+            
+            particle.style.position = 'absolute';
+            particle.style.width = '10px';
+            particle.style.height = '10px';
+            particle.style.background = 'rgba(255,255,255,0.6)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '100%';
+            particle.style.pointerEvents = 'none';
+            particle.style.animation = 'float-up 4s linear forwards';
+            
+            hero.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 4000);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        setInterval(createParticle, 500);
+    </script>
+</body>
+</html>
