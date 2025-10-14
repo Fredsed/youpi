@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créativité & Arts - Youpi Jouets</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      display: inline-block;
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes floatLogo {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px) rotate(-2deg); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Category Page */
+    .category-page {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .category-page h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .category-page h1 .icon-anim {
+      display: inline-block;
+      animation: spinIcon 4s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spinIcon {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .categories-intro {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .categories-intro .sparkle {
+      display: inline-block;
+      animation: sparkle 1.8s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0.2; transform: scale(0.9) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+      100% { opacity: 0.2; transform: scale(0.9) rotate(0deg); }
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      color: #333;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      transition: left 0.5s;
+    }
+
+    .product-card:hover .product-image::before {
+      left: 100%;
+    }
+
+    .product-info {
+      padding: 25px;
+    }
+
+    .product-info h4 {
+      font-size: 1.4em;
+      color: #333;
+      margin-bottom: 10px;
+      min-height: 50px;
+    }
+
+    .product-info p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-size: 0.95em;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .product-price {
+      font-size: 1.4em;
+      font-weight: bold;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .buy-button {
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .buy-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .view-all-btn {
+      display: inline-block;
+      margin: 40px auto 0;
+      background: white;
+      color: #667eea;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .view-all-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      color: white;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .category-page h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="container">
+      <div class="logo">Youpi! 🎈</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="peluches.html">Peluches</a></li>
+        <li><a href="construction.html">Construction</a></li>
+        <li><a href="vehicules.html">Véhicules</a></li>
+        <li><a href="jeux-societe.html">Jeux</a></li>
+        <li><a href="deguisements.html">Déguisements</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="category-page">
+    <div class="container">
+      <h1><span class="icon-anim">🎨</span> Créativité & Arts</h1>
+      <p class="categories-intro">
+        Libérez l'imagination des enfants avec nos kits créatifs, ateliers de peinture et jeux artistiques <span class="sparkle">✨</span>
+      </p>
+
+      <div class="products-grid">
+        <!-- Produit 1 -->
+        <div class="product-card" id="produit-kit-peinture-artistique">
+          <div class="product-badge">Nouveau</div>
+          <div class="product-image">🖌️</div>
+          <div class="product-info">
+            <h4>Kit de Peinture Artistique</h4>
+            <p>Un coffret complet pour peindre comme un vrai artiste.</p>
+            <div class="product-footer">
+              <span class="product-price">10 000 FCFA</span>
+              <button class="buy-button">Acheter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 2 -->
+        <div class="product-card" id="produit-atelier-decoupage-creatif">
+          <div class="product-image">✂️</div>
+          <div class="product-info">
+            <h4>Atelier Découpage Créatif</h4>
+            <p>Tout pour découper, coller et créer des formes originales en toute sécurité.</p>
+            <div class="product-footer">
+              <span class="product-price">8 500 FCFA</span>
+              <button class="buy-button">Acheter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 3 -->
+        <div class="product-card" id="produit-mini-atelier-couture">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-image">🧵</div>
+          <div class="product-info">
+            <h4>Mini Atelier Couture</h4>
+            <p>Un kit amusant pour apprendre la couture tout en développant la patience et la créativité.</p>
+            <div class="product-footer">
+              <span class="product-price">12 000 FCFA</span>
+              <button class="buy-button">Acheter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a href="index.html" class="view-all-btn">← Retour à l'accueil</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="color:#bdc3c7; margin-top:20px;">
+        © 2024 Youpi Jouets - Tous droits réservés
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Boutons Acheter - Envoyer vers WhatsApp
+    document.querySelectorAll('.buy-button').forEach(button => {
+      button.addEventListener('click', function() {
+        // Récupérer les informations du produit
+        const productCard = this.closest('.product-card');
+        const productName = productCard.querySelector('h4').textContent;
+        const productPrice = productCard.querySelector('.product-price').textContent;
+        const productId = productCard.id;
+        
+        // Construire l'URL du produit
+        const productUrl = window.location.origin + window.location.pathname + '#' + productId;
+        
+        // Construire le message WhatsApp
+        const message = `Bonjour Youpi! je souhaite acheter :\n\n` +
+                       `📦 *${productName}*\n` +
+                       `💰 Prix : ${productPrice}\n\n` +
+                       `🔗 Voir le produit : ${productUrl}`;
+        
+        // Encoder le message pour l'URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Numéro WhatsApp (format international sans + ni espaces)
+        const whatsappNumber = '22962797245';
+        
+        // Créer l'URL WhatsApp
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        
+        // Ouvrir WhatsApp dans un nouvel onglet
+        window.open(whatsappUrl, '_blank');
+        
+        // Feedback visuel
+        this.textContent = '✓ Message envoyé';
+        this.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+        
+        setTimeout(() => {
+          this.textContent = 'Acheter';
+          this.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57)';
+        }, 3000);
+      });
+    });
+  </script>
+
+</body>
+</html>
