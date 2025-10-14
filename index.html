@@ -104,7 +104,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- Dropdown (Catégories) styles - Simplifié --- */
+        /* --- Dropdown (Catégories) styles --- */
         .dropdown {
             position: relative;
         }
@@ -145,7 +145,6 @@
             z-index: 9999;
         }
 
-        /* Classe pour affichage via JS */
         .dropdown-menu.show {
             display: flex !important;
         }
@@ -172,27 +171,6 @@
         @media (min-width: 769px) {
             .dropdown:hover .dropdown-menu {
                 display: flex;
-            }
-        }
-        
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .dropdown-menu {
-                position: fixed;
-                top: auto;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90vw;
-                max-width: 350px;
-                min-width: unset;
-                margin-top: 10px;
-            }
-            
-            .dropdown-menu a {
-                padding: 16px 20px;
-                font-size: 0.95em;
-                white-space: normal;
-                word-wrap: break-word;
             }
         }
 
@@ -589,11 +567,46 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - MODIFIÉ pour garder le même affichage */
         @media (max-width: 768px) {
+            /* Header reste horizontal */
+            .logo {
+                font-size: 2em;
+            }
+            
             .nav-links {
-                flex-direction: column;
-                gap: 10px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            
+            .dropdown-toggle {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            
+            /* Dropdown mobile */
+            .dropdown-menu {
+                position: fixed;
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90vw;
+                max-width: 350px;
+                min-width: unset;
+                margin-top: 10px;
+            }
+            
+            .dropdown-menu a {
+                padding: 16px 20px;
+                font-size: 0.95em;
+                white-space: normal;
+                word-wrap: break-word;
             }
             
             .hero h1 {
@@ -612,10 +625,6 @@
                 font-size: 1.8em;
             }
             
-            .logo {
-                font-size: 2em;
-            }
-            
             .hero::before,
             .hero::after {
                 display: none;
@@ -624,20 +633,21 @@
             .container {
                 padding: 0 15px;
             }
-            
-            nav {
-                flex-direction: column;
-                gap: 15px;
+        }
+        
+        /* Pour très petits écrans */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8em;
             }
             
             .nav-links {
-                width: 100%;
-                justify-content: center;
+                gap: 10px;
             }
             
-            .dropdown {
-                width: 100%;
-                text-align: center;
+            .nav-links a, .dropdown-toggle {
+                padding: 6px 12px;
+                font-size: 0.85em;
             }
         }
     </style>
@@ -1060,7 +1070,7 @@
             </div>
             
             <p style="margin-top: 30px; color: #bdc3c7;">
-                © 2024 Youpi Jouets - Tous droits réservés | Fait avec ❤️ pour les enfants
+                © 2025 Youpi Jouets - Tous droits réservés | Fait avec ❤️ pour les enfants
             </p>
         </div>
     </footer>
